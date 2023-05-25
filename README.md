@@ -57,15 +57,73 @@ Follow these steps to setup the assessment:
 
 Please provide the QUERY (not the answer) that returns each of the following:
 1. The flight numbers for all delayed flights (i.e. not on time).
+``` sql
+SELECT flight_number
+FROM flights
+WHERE on_time = false;
+```
 2. The count of delayed flights.
-3. The sum of prices for all flights arriving to Raleigh-Durham (`RDU`).
-4. The average price for all flights in the database.
-5. The average price for all flights arriving to Raleigh-Durham.
-6. The departure city and number of flights departing from each city.
+``` sql
+SELECT COUNT(flight_number)
+FROM flights
+WHERE on_time = false;
+```
+1. The sum of prices for all flights arriving to Raleigh-Durham (`RDU`).
+``` sql
+SELECT SUM(price)
+FROM flights
+WHERE arrive_city = 'RDU';
+```
+1. The average price for all flights in the database.
+``` sql
+SELECT ROUND(AVG(price))
+FROM flights;
+-- added round to make output cleaner
+```
+3. The average price for all flights arriving to Raleigh-Durham.
+``` sql
+SELECT ROUND(AVG(price))
+FROM flights
+WHERE arrive_city = 'RDU';
+-- added round to make output cleaner
+```
+5. The departure city and number of flights departing from each city.
+``` sql
+SELECT depart_city, COUNT(flight_number) 
+FROM flights
+GROUP BY depart_city;
+```
 7. The count of airlines in the database.
-8. The count of flights in the database.
-9. The flight number, departure city, arrival city, price, and airline name of each flight. Do not return the airline ID number.
-10. The airline name, flight number, and price of each flight on the Delta airline. (Assume that you do not know the ID number of the Delta airline. In a larger database, you would be expected to memorize ID numbers).
+``` sql
+SELECT COUNT(airline_name) AS "Count of Airlines"
+FROM airlines;
+```
+9. The count of flights in the database.
+``` sql
+SELECT COUNT(flight_number) AS "Count of flights"
+FROM flights;
+```
+11. The flight number, departure city, arrival city, price, and airline name of each flight. Do not return the airline ID number.
+``` sql
+SELECT 
+flights.flight_number AS "Flight Numbers", 
+flights.depart_city AS "Departure City",
+flights.arrive_city AS "Arrival City", 
+flights.price AS "Price of Flights", 
+airlines.airline_name AS "Airline Name"
+FROM flights LEFT JOIN airlines
+ON airlines.id = flights.airline_id;
+```
+13. The airline name, flight number, and price of each flight on the Delta airline. (Assume that you do not know the ID number of the Delta airline. In a larger database, you would be expected to memorize ID numbers).
+``` sql
+SELECT 
+airlines.airline_name AS "Air Line Name", 
+flights.flight_number AS "Flight Numbers", 
+flights.price AS "Price OF Flights"
+FROM flights LEFT JOIN airlines
+ON airlines.id = flights.airline_id
+WHERE airline_name = 'Delta';
+```
 
 ## Submission
 
