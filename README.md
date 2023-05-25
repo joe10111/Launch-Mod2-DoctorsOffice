@@ -27,7 +27,9 @@
 	    
     6. What query would return the number of doctors who have a specialization in "pediatrics"?
   ```sql
-  SELECT COUNT(specialization) FROM doctors WHERE specialization = 'pediatrics';
+  SELECT COUNT(specialization) 
+  FROM doctors 
+  WHERE specialization = 'pediatrics';
   ```
 <br>
 
