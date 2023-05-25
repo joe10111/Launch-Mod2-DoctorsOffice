@@ -11,11 +11,17 @@
 [Citation for ERD](https://circle.visual-paradigm.com/hospital/)
 1. Use the Doctors Office ERD above to answer the following questions:
     1. How many patients can each doctor have?
-    1. How many doctors can each patient have?
-    1. How would you describe the relationship between patients and tests? Be sure to use either one-to-one, one-to-many, or many-to-many in your answer.
-    1. What are the foreign keys in this diagram?
-    1. What is the primary key for the Tests table.
-    1. What query would return the number of doctors who have a specialization in "pediatrics"?
+	    1: That is a many to one relationship. Many patients to one doctor. 
+    2. How many doctors can each patient have?
+	    2: One doctor per-patient. One to many relationship.
+    3. How would you describe the relationship between patients and tests? Be sure to use either one-to-one, one-to-many, or many-to-many in your answer.
+	    3: The relationship is one patient to many tests, one-to-many.
+    4. What are the foreign keys in this diagram?
+	    4: Doctor has a foreign key of doctor_id in the patients table , patient has a foreign key of patient_id in the tests table, and there are no foreign id in the doctor table. 
+    5. What is the primary key for the Tests table.
+	    5: The primary key for the test table is id. 
+    6. What query would return the number of doctors who have a specialization in "pediatrics"?
+	    6: SELECT COUNT(specialization) FROM doctors WHERE specialization = 'pediatrics';
 
 <br>
 
