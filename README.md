@@ -25,19 +25,25 @@
 
 <br>
 
-2. What does a join table do? Why would we need one?
-3. What is a question that the following query helps answer?
-```SQL
+7. What does a join table do? Why would we need one?
+	7: Joining two tables allows the programmer to select data from both tables and join them together to transform them into a bigger collection of data. You can specify whether you want more data from the left or right source by doing a left join, a right join, or include all data possible with a full join. 
+8. What is a question that the following query helps answer?
+	8:. The query bellow helps answers the question Count the number of artists grouped by hometown. 
+
+```sql
 SELECT hometown, COUNT(name) FROM artists
 GROUP BY hometown;
 ```
 
-4. I'm trying to write a query to find the average age of all patients, but it's not working. How would you modify this query to get it to work as expected?
-```SQL
-SELECT age FROM AVERAGE(patients);
+9. I'm trying to write a query to find the average age of all patients, but it's not working. How would you modify this query to get it to work as expected?
+9:
+```sql
+SELECT age FROM AVERAGE(patients)
+GROUP BY age;
 ```
-5. How would you describe the difference between a `LEFT JOIN` and an `INNER JOIN`
- 
+
+10. How would you describe the difference between a `LEFT JOIN` and an `INNER JOIN`
+	10: Left Join will include all data from the left source of the join statement while only taking the intersecting data from the right source. Inner Join will only take both intersecting data from each source on the left and right of the join statement.  
 ## Exercise (10 Points Possible)
 
 Follow these steps to setup the assessment:
